@@ -75,7 +75,7 @@ function createFeatures(earthquakeData) {
       fillColor: color,
       // Adjust the radius.
       radius: Math.sqrt(earthquakeData[i].properties.mag) * 100000
-    }).bindPopup(`<h1>${earthquakeData[i].properties.place}</h1> <hr> <h3>Magnitude: ${earthquakeData[i].properties.mag}</h3>`).addTo(myMap);
+    }).bindPopup(`<h1>${earthquakeData[i].properties.place}</h1> <hr> <h3>Magnitude: ${earthquakeData[i].properties.mag} Depth: ${earthquakeData[i].geometry.coordinates[2]} </h3>`).addTo(myMap);
   }
 
   // Create a GeoJSON layer that contains the features array on the earthquakeData object.
