@@ -5,7 +5,7 @@ Map shows earthquake locations marked with circles proportional to the magnitude
 Included legend explains the earthquake depth color scheme.
 Data used for the challenge is sourced from the USGS API from the past 30-day significnat Earthquake dataset.  
 
-Access life map: https://vickyl86.github.io/Leaflet_Challenge_VL/
+Access live map: https://vickyl86.github.io/Leaflet_Challenge_VL/
 
 Data Source Main Page:
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
