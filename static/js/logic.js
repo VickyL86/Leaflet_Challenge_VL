@@ -88,7 +88,7 @@ function createFeatures(earthquakeData) {
   overlayMaps["Earthquakes"] = earthquakes;
 }
 
-// Function to add legend to the map
+// Function to add legend to the map Added with ChatGPT
 function addLegend() {
     const legend = L.control({ position: 'bottomright' });
   
