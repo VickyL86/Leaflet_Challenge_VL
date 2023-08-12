@@ -40,6 +40,8 @@ L.control.layers(baseMaps, overlayMaps, {
 d3.json(queryUrl).then(function(data) {
   // Once we get a response, send the data.features object to the createFeatures function.
   createFeatures(data.features);
+  // Add legend to the map
+  addLegend();
 });
 
 function createFeatures(earthquakeData) {
@@ -84,4 +86,26 @@ function createFeatures(earthquakeData) {
 
   // Add the earthquakes layer to the overlay object.
   overlayMaps["Earthquakes"] = earthquakes;
+}
+
+// Function to add legend to the map
+function addLegend() {
+    const legend = L.control({ position: 'bottomright' });
+  
+    legend.onAdd = function(map) {
+      const div = L.DomUtil.create('div', 'info legend');
+      const grades = [0, 10, 30, 50, 70, 90];
+      const colors = ["palegreen", "greenyellow", "yellow", "orange", "darkorange", "red"];
+  
+      // Loop through the density intervals and create a label with a colored square for each interval
+      for (let i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' + colors[i] + '"></i> ' +
+          grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+  
+      return div;
+    };
+  
+    legend.addTo(myMap);
 }
