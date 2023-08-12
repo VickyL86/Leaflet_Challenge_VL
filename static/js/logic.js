@@ -50,9 +50,6 @@ function createFeatures(earthquakeData) {
       }).bindPopup(`<h1>${earthquakeData[i].properties.place}</h1> <hr> <h3>Magnitude: ${earthquakeData[i].properties.mag}</h3>`).addTo(myMap);
     }
 
-
-
-
     // Create a GeoJSON layer that contains the features array on the earthquakeData object.
     // Run the onEachFeature function once for each piece of data in the array.
     let earthquakes = L.geoJSON(earthquakeData, {
