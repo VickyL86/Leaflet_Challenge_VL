@@ -18,7 +18,39 @@ function createFeatures(earthquakeData) {
     function onEachFeature(feature, layer) {
       layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><p>${new Date(feature.properties.time)}</p>`);
     }
-    //Loop through the array and create one marker for each "mag" 
+    //Loop through the array and create one marker for each place object.
+    for (let i = 0; i < earthquakeData.length; i++) {
+      // Conditionals for magnitude
+      let color = "";
+      if (earthquakeData[i].properties.mag > 5) {
+        color = "red";
+      }
+      else if (earthquakeData[i].properties.mag > 4) {
+        color = "orange";
+      }
+      else if (earthquakeData[i].properties.mag > 3) {
+        color = "yellow";
+      }
+      else if (earthquakeData[i].properties.mag > 2) {
+        color = "green";
+      }
+      else if (earthquakeData[i].properties.mag > 1) {
+        color = "blue";
+      }
+      else {
+        color = "violet";
+      }
+      // Add circles to the map.
+      L.circle(earthquakeData[i].geometry.coordinates, {
+        fillOpacity: 0.75,
+        color: "white",
+        fillColor: color,
+        // Adjust the radius.
+        radius: Math.sqrt(earthquakeData[i].properties.mag) * 50000
+      }).bindPopup(`<h1>${earthquakeData[i].properties.place}</h1> <hr> <h3>Magnitude: ${earthquakeData[i].properties.mag}</h3>`).addTo(myMap);
+    }
+
+
 
 
     // Create a GeoJSON layer that contains the features array on the earthquakeData object.
