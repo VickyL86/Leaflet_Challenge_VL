@@ -51,20 +51,20 @@ function createFeatures(earthquakeData) {
 
   // Loop through the array and create one marker for each earthquake.
   for (let i = 0; i < earthquakeData.length; i++) {
-    // Conditionals for magnitude
+    // Conditionals for depth (third coordinate) -->https://www.w3schools.com/cssref/css_colors.php
     let color = "";
-    if (earthquakeData[i].properties.mag > 7) {
+    if (earthquakeData[i].geometry.coordinates[2] > 90) {
       color = "red";
-    } else if (earthquakeData[i].properties.mag > 6) {
+    } else if (earthquakeData[i].geometry.coordinates[2] > 70) {
+      color = "darkorange";
+    } else if (earthquakeData[i].geometry.coordinates[2] > 50) {
       color = "orange";
-    } else if (earthquakeData[i].properties.mag > 5) {
+    } else if (earthquakeData[i].geometry.coordinates[2] > 30) {
       color = "yellow";
-    } else if (earthquakeData[i].properties.mag > 4) {
-      color = "green";
-    } else if (earthquakeData[i].properties.mag > 3) {
-      color = "blue";
+    } else if (earthquakeData[i].geometry.coordinates[2] > 10) {
+      color = "greenyellow";
     } else {
-      color = "white";
+      color = "palegreen";
     }
     // Add circles to the map.
     L.circle([earthquakeData[i].geometry.coordinates[1], earthquakeData[i].geometry.coordinates[0]], {
